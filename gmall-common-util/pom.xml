@@ -5,15 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.edward.gmall</groupId>
+        <groupId>com.com.edward.gmall</groupId>
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.edward</groupId>
+    <groupId>org.com.edward</groupId>
     <artifactId>gmall-common-util</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -24,7 +30,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-
+        <!--文件存储服务器依赖-->
+        <dependency>
+            <groupId>net.oschina.zcx7878</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -46,28 +57,5 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.101tec</groupId>
-            <artifactId>zkclient</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.gitee.reger</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-        </dependency>
-
-
     </dependencies>
-
 </project>

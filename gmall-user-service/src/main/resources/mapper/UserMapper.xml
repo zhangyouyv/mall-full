@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edward.gmall.user.mapper.UserMapper">
-    <select id="selectAllUser" resultType="com.edward.gmall.bean.UmsMember">
+<mapper namespace="com.com.edward.gmall.user.mapper.UserMapper">
+    <select id="selectAllUser" resultType="com.com.edward.gmall.bean.UmsMember">
         select * from ums_member;
     </select>
 </mapper>

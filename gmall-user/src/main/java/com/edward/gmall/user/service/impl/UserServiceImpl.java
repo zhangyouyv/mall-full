@@ -5,8 +5,8 @@ package com.edward.gmall.user.service.impl;
 import com.edward.gmall.bean.UmsMember;
 import com.edward.gmall.bean.UmsMemberReceiveAddress;
 import com.edward.gmall.service.UserService;
-import com.edward.gmall.user.mapper.UmsMemberReceiveAddressMapper;
 import com.edward.gmall.user.mapper.UserMapper;
+import com.edward.gmall.user.mapper.UmsMemberReceiveAddressMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -4,25 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.edward.gmall</groupId>
+    <groupId>com.com.edward.gmall</groupId>
     <artifactId>gmall-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
         <fastjson.version>1.2.46</fastjson.version>
-        <dubbo-starter.version>1.0.10</dubbo-starter.version>
-        <dubbo.version>2.6.0</dubbo.version>
+<!--        <dubbo-starter.version>1.0.10</dubbo-starter.version>-->
+        <dubbo.version>2.7.3</dubbo.version>
+        <curator.version>4.0.0</curator.version>
+        <zookeeper.version>3.4.13</zookeeper.version>
         <zkclient.version>0.10</zkclient.version>
         <mybatis.version>1.3.1</mybatis.version>
         <nekohtml.version>1.9.20</nekohtml.version>
@@ -31,48 +32,84 @@
         <jsoup.version>1.11.2</jsoup.version>
         <httpclient.version>4.5.5</httpclient.version>
         <commons-lang3.version>3.7</commons-lang3.version>
-        <mapper-starter.version>2.0.3-beta1</mapper-starter.version>
+        <mapper-starter.version>1.2.3</mapper-starter.version>
         <jedis.version>2.9.0</jedis.version>
         <jest.version>5.3.3</jest.version>
         <jna.version>4.5.1</jna.version>
         <beanUtils.version>1.9.3</beanUtils.version>
-        <dubbo-starter.version>1.0.10</dubbo-starter.version>
-        <dubbo.version>2.6.0</dubbo.version>
+
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
-            <!-- 很好支持dubbo协议的json-->
+<!--            @Reference远程调用服务失效，弃用-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
 
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba</groupId>-->
+<!--                <artifactId>dubbo</artifactId>-->
+<!--                <version>${dubbo.version}</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>com.gitee.reger</groupId>-->
+<!--                <artifactId>spring-boot-starter-dubbo</artifactId>-->
+<!--                <version>${dubbo-starter.version}</version>-->
+<!--            </dependency>-->
+
+<!--            改用apache的dubbo-->
+            <!-- 升级 apache dubbo -->
             <dependency>
-                <groupId>com.alibaba</groupId>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
-
+            <!-- Zookeeper -->
             <dependency>
-                <groupId>com.101tec</groupId>
-                <artifactId>zkclient</artifactId>
-                <version>${zkclient.version}</version>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
-
             <dependency>
-                <groupId>com.gitee.reger</groupId>
-                <artifactId>spring-boot-starter-dubbo</artifactId>
-                <version>${dubbo-starter.version}</version>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
                 <exclusions>
                     <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-parent</artifactId>
+                        <groupId>org.apache.zookeeper</groupId>
+                        <artifactId>zookeeper</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!-- 最新 starter -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+
+<!--            <dependency>-->
+<!--                <groupId>com.101tec</groupId>-->
+<!--                <artifactId>zkclient</artifactId>-->
+<!--                <version>${zkclient.version}</version>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.slf4j</groupId>-->
+<!--                        <artifactId>slf4j-log4j12</artifactId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -80,7 +117,7 @@
                 <version>${mybatis.version}</version>
             </dependency>
 
-            <!-- thymeleaf支持包-->
+
             <dependency>
                 <groupId>net.sourceforge.nekohtml</groupId>
                 <artifactId>nekohtml</artifactId>
@@ -131,7 +168,7 @@
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
             </dependency>
-            <!-- es工具包-->
+
             <!-- https://mvnrepository.com/artifact/io.searchbox/jest -->
             <dependency>
                 <groupId>io.searchbox</groupId>
@@ -151,20 +188,8 @@
                 <artifactId>commons-beanutils</artifactId>
                 <version>${beanUtils.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.gitee.reger</groupId>
-                <artifactId>spring-boot-starter-dubbo</artifactId>
-                <version>${dubbo-starter.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
+
 
 </project>

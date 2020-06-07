@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="10.0.1.4" uuid="0c7c9c99-d088-4c49-9af2-0be108c4b96f">
+    <data-source source="LOCAL" name="10.0.1.4" uuid="97db8b4f-385a-4f8f-9b72-a1b27a19ceee">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <remarks>ms</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://10.0.1.4:3306/seckilledu</jdbc-url>
       <driver-properties>

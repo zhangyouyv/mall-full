@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/gmall-manage-service/src/main/resources/mapper/PmsBaseAttrInfoMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-service/src/main/resources/mapper/PmsSkuInfoMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/gmall-manage-service/src/main/resources/mapper/SpuSalesAttrMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/gmall-user-service/src/main/resources/mapper/UserMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/gmall-user/src/main/resources/mapper/UserMapper.xml" dialect="MySQL" />
+    <file url="PROJECT" dialect="MariaDB" />
+  </component>
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/gmall-manage-service/src/main/resources/mapper/SpuSalesAttrMapper.xml" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;97db8b4f-385a-4f8f-9b72-a1b27a19ceee&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;@negative&quot;:&quot;1&quot;     }    }   }  } }}" />
+    <file url="file://$PROJECT_DIR$/gmall-user-service/src/main/resources/mapper/UserMapper.xml" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;0c7c9c99-d088-4c49-9af2-0be108c4b96f&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;@negative&quot;:&quot;1&quot;     }    }   }  } }}" />
+    <file url="file://$PROJECT_DIR$/gmall-user/src/main/resources/mapper/UserMapper.xml" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;0c7c9c99-d088-4c49-9af2-0be108c4b96f&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;@negative&quot;:&quot;1&quot;     }    }   }  } }}" />
+  </component>
+</project>
