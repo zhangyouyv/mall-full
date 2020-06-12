@@ -2,6 +2,7 @@ package com.edward.gmall.service;
 
 import com.edward.gmall.bean.PmsSkuInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface SkuService {
@@ -13,4 +14,6 @@ public interface SkuService {
     List<PmsSkuInfo> getSkuSaleAttrValueListCheckBySku(String productId);
 
     List<PmsSkuInfo> getAll();
+
+    boolean checkPrice(String productSkuId, BigDecimal price);
 }

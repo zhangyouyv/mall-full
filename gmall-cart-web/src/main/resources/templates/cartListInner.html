@@ -7,15 +7,16 @@
 <body>
 <div class="One_ShopCon">
     <ul>
-        <li  th:each="cartInfo:${cartList}">
-            <div> </div>
+        <li th:each="cartInfo:${cartList}">
+            <div></div>
 
             <div>
                 <ol>
-                    <li><input type="checkbox"   class="check"  th:value="${cartInfo.productSkuId}"  onchange="checkSku(this)" th:checked="(${cartInfo.isChecked}==1)?'true':'false'" /></li>
+                    <li><input type="checkbox" class="check" th:value="${cartInfo.productSkuId}"
+                               onchange="checkSku(this)" th:checked="(${cartInfo.isChecked}==1)?'true':'false'"/></li>
                     <li>
-                        <dt><img  th:src="${cartInfo.productPic}"  src="img\shop1.jpg" alt=""></dt>
-                        <dd  th:onclick="'toItem('+${cartInfo.productSkuId}+')'">
+                        <dt><img th:src="${cartInfo.productPic}" src="img\shop1.jpg" alt=""></dt>
+                        <dd th:onclick="'toItem('+${cartInfo.productSkuId}+')'">
                             <p>
                                 <span th:text="${#strings.abbreviate(cartInfo.productName,50)}">TCL 55A950C 55英寸32核</span>
                                 <!--th:text="${cartInfo.productName}"-->
@@ -23,7 +24,7 @@
                         </dd>
                     </li>
                     <li>
-                        <p class="dj" th:text="'￥'+${cartInfo.price}" >4599.00</p>
+                        <p class="dj" th:text="'￥'+${cartInfo.price}">4599.00</p>
                     </li>
                     <li>
                         <p>
@@ -32,7 +33,8 @@
                             <span>+</span>
                         </p>
                     </li>
-                    <li style="font-weight:bold"><p class="zj" th:text="'￥'+${cartInfo.price*cartInfo.quantity}"  >￥22995.00</p></li>
+                    <li style="font-weight:bold"><p class="zj" th:text="'￥'+${cartInfo.price*cartInfo.quantity}">
+                        ￥22995.00</p></li>
                     <li>
                         <p>删除</p>
                     </li>

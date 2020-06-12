@@ -8,42 +8,49 @@
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.edward</groupId>
+    <groupId>com.edward</groupId>
     <artifactId>gmall-web-util</artifactId>
     <version>1.0-SNAPSHOT</version>
-<dependencies>
-    <dependency>
-        <groupId>org.edward</groupId>
-        <artifactId>gmall-common-util</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
-<!--thymeleaf支持包，这样就可以设置热部署和松校验-->
-    <dependency>
-        <groupId>net.sourceforge.nekohtml</groupId>
-        <artifactId>nekohtml</artifactId>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.edward</groupId>
+            <artifactId>gmall-common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--thymeleaf支持包，这样就可以设置热部署和松校验-->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+        </dependency>
 
-    <dependency>
-        <groupId>xml-apis</groupId>
-        <artifactId>xml-apis</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+        </dependency>
 
-    <dependency>
-        <groupId>org.apache.xmlgraphics</groupId>
-        <artifactId>batik-ext</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-ext</artifactId>
+        </dependency>
 
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
-    <dependency>
-        <groupId>com.alibaba.spring</groupId>
-        <artifactId>spring-context-support</artifactId>
-        <version>1.0.2</version>
-    </dependency>
+        <dependency>
+            <groupId>com.alibaba.spring</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>1.0.2</version>
+        </dependency>
 
-</dependencies>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+
+
+    </dependencies>
 
 </project>

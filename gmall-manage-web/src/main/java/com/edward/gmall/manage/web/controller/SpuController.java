@@ -22,7 +22,7 @@ public class SpuController {
 
     @RequestMapping("spuList")
     @ResponseBody
-    public List<PmsProductInfo> getSpuList(String catalog3Id){
+    public List<PmsProductInfo> getSpuList(String catalog3Id) {
         List<PmsProductInfo> pmsProductInfos = spuService.getSpuList(catalog3Id);
         return pmsProductInfos;
     }
@@ -30,7 +30,7 @@ public class SpuController {
     //新建spu
     @RequestMapping("saveSpuInfo")
     @ResponseBody
-    public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
+    public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo) {
         spuService.saveSpuInfo(pmsProductInfo);
         return "success";
     }
@@ -38,7 +38,7 @@ public class SpuController {
     //查询销售属性
     @RequestMapping("spuSaleAttrList")
     @ResponseBody
-    public List<PmsProductSaleAttr> getSpuSaleAttrList(String spuId){
+    public List<PmsProductSaleAttr> getSpuSaleAttrList(String spuId) {
         List<PmsProductSaleAttr> saleAttrList = spuService.getSpuSaleAttrList(spuId);
         return saleAttrList;
     }
@@ -46,7 +46,7 @@ public class SpuController {
 
     @RequestMapping("spuImageList")
     @ResponseBody
-    public List<PmsProductImage> getSpuImageList(String spuId){
+    public List<PmsProductImage> getSpuImageList(String spuId) {
         List<PmsProductImage> pmsProductImages = spuService.getSpuImageList(spuId);
         return pmsProductImages;
     }

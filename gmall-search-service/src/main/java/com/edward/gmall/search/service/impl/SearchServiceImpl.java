@@ -27,10 +27,10 @@ public class SearchServiceImpl implements SearchService {
     JestClient jestClient;
 
     @Override
-    public List<PmsSearchSkuInfo> getList(PmsSearchParam pmsSearchParam){
+    public List<PmsSearchSkuInfo> getList(PmsSearchParam pmsSearchParam) {
         //要执行的语句
         String dslStr = getSearchDsl(pmsSearchParam);
-        System.out.println("++++++++++++++++++++++"+dslStr+"++++++++++++++++++++++");
+        System.out.println("++++++++++++++++++++++" + dslStr + "++++++++++++++++++++++");
         List<PmsSearchSkuInfo> pmsSearchSkuInfoList = new ArrayList<>();
         //index库名，type表名
         //用api来执行查询
@@ -46,7 +46,7 @@ public class SearchServiceImpl implements SearchService {
             PmsSearchSkuInfo source = hit.source;
             Map<String, List<String>> highlight = hit.highlight;
             //如果没输入关键字的话，会报空指针
-            if(highlight!=null){
+            if (highlight != null) {
                 String skuName = highlight.get("skuName").get(0);
                 source.setSkuName(skuName);
             }
@@ -68,11 +68,11 @@ public class SearchServiceImpl implements SearchService {
         BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
         //filter
 
-        if(StringUtils.isNotBlank(catalog3Id)){
+        if (StringUtils.isNotBlank(catalog3Id)) {
             TermQueryBuilder termQueryBuilder = new TermQueryBuilder("catalog3Id", catalog3Id);
             boolQueryBuilder.filter(termQueryBuilder);
         }
-        if(skuAttrValueList!=null){
+        if (skuAttrValueList != null) {
             for (PmsSkuAttrValue pmsSkuAttrValue : skuAttrValueList) {
                 TermQueryBuilder termQueryBuilder = new TermQueryBuilder("skuAttrValueList.valueId", pmsSkuAttrValue.getValueId());
                 boolQueryBuilder.filter(termQueryBuilder);
@@ -81,8 +81,8 @@ public class SearchServiceImpl implements SearchService {
 
 
         //must
-        if(StringUtils.isNotBlank(keyword)){
-            MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder("skuName",keyword);
+        if (StringUtils.isNotBlank(keyword)) {
+            MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder("skuName", keyword);
             boolQueryBuilder.must(matchQueryBuilder);
         }
 

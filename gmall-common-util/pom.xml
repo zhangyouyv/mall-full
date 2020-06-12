@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.com.edward.gmall</groupId>
+        <groupId>com.edward.gmall</groupId>
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.com.edward</groupId>
+    <groupId>com.edward</groupId>
     <artifactId>gmall-common-util</artifactId>
     <version>1.0-SNAPSHOT</version>
 

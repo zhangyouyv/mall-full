@@ -23,7 +23,7 @@ public class GmallManageServiceApplicationTests {
     @Test
     public void redisTest() {
         Jedis jedis = redisUtil.getJedis();
-        System.out.println("输出："+jedis);
+        System.out.println("输出：" + jedis);
 
     }
 }

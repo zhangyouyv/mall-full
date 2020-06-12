@@ -5,9 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import tk.mybatis.spring.annotation.MapperScan;
+
 @SpringBootApplication
-@MapperScan(basePackages = "com.com.edward.gmall.manage.service.mapper")
-@DubboComponentScan(basePackages = "com.com.edward.gmall.manage.service.service.impl")
+@MapperScan(basePackages = "com.edward.gmall.manage.service.mapper")
+@DubboComponentScan(basePackages = "com.edward.gmall.manage.service.service.impl")
 @ComponentScan(basePackages = "com.edward.gmall")
 public class GmallManageServiceApplication {
 

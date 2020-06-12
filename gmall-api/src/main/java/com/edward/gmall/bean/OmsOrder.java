@@ -1,9 +1,11 @@
 package com.edward.gmall.bean;
 
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class OmsOrder implements Serializable {
 
@@ -24,7 +26,7 @@ public class OmsOrder implements Serializable {
     private BigDecimal discountAmount;
     private int payType;
     private int sourceType;
-    private int status;
+    private Integer status;
     private int orderType;
     private String deliveryCompany;
     private String deliverySn;
@@ -53,6 +55,17 @@ public class OmsOrder implements Serializable {
     private Date receiveTime;
     private Date commentTime;
     private Date modifyTime;
+
+    @Transient
+    private List<OmsOrderItem> omsOrderItemList;
+
+    public List<OmsOrderItem> getOmsOrderItemList() {
+        return omsOrderItemList;
+    }
+
+    public void setOmsOrderItemList(List<OmsOrderItem> omsOrderItemList) {
+        this.omsOrderItemList = omsOrderItemList;
+    }
 
     public String getId() {
         return id;
@@ -174,11 +187,11 @@ public class OmsOrder implements Serializable {
         this.sourceType = sourceType;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

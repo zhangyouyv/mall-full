@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GmallRedissonConfig {
 
-    @Value("${spring.redis.host:0}")
+    @Value("${spring.redis.host}")
     private String host;
 
     @Value("${spring.redis.port:6379}")

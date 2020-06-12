@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.com.edward.gmall</groupId>
+    <groupId>com.edward.gmall</groupId>
     <artifactId>gmall-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -20,7 +20,7 @@
         <java.version>1.8</java.version>
 
         <fastjson.version>1.2.46</fastjson.version>
-<!--        <dubbo-starter.version>1.0.10</dubbo-starter.version>-->
+        <!--        <dubbo-starter.version>1.0.10</dubbo-starter.version>-->
         <dubbo.version>2.7.3</dubbo.version>
         <curator.version>4.0.0</curator.version>
         <zookeeper.version>3.4.13</zookeeper.version>
@@ -43,26 +43,26 @@
 
     <dependencyManagement>
         <dependencies>
-<!--            @Reference远程调用服务失效，弃用-->
+            <!--            @Reference远程调用服务失效，弃用-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba</groupId>-->
-<!--                <artifactId>dubbo</artifactId>-->
-<!--                <version>${dubbo.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba</groupId>-->
+            <!--                <artifactId>dubbo</artifactId>-->
+            <!--                <version>${dubbo.version}</version>-->
+            <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.gitee.reger</groupId>-->
-<!--                <artifactId>spring-boot-starter-dubbo</artifactId>-->
-<!--                <version>${dubbo-starter.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.gitee.reger</groupId>-->
+            <!--                <artifactId>spring-boot-starter-dubbo</artifactId>-->
+            <!--                <version>${dubbo-starter.version}</version>-->
+            <!--            </dependency>-->
 
-<!--            改用apache的dubbo-->
+            <!--            改用apache的dubbo-->
             <!-- 升级 apache dubbo -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -99,17 +99,17 @@
             </dependency>
 
 
-<!--            <dependency>-->
-<!--                <groupId>com.101tec</groupId>-->
-<!--                <artifactId>zkclient</artifactId>-->
-<!--                <version>${zkclient.version}</version>-->
-<!--                <exclusions>-->
-<!--                    <exclusion>-->
-<!--                        <groupId>org.slf4j</groupId>-->
-<!--                        <artifactId>slf4j-log4j12</artifactId>-->
-<!--                    </exclusion>-->
-<!--                </exclusions>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.101tec</groupId>-->
+            <!--                <artifactId>zkclient</artifactId>-->
+            <!--                <version>${zkclient.version}</version>-->
+            <!--                <exclusions>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>org.slf4j</groupId>-->
+            <!--                        <artifactId>slf4j-log4j12</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                </exclusions>-->
+            <!--            </dependency>-->
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>

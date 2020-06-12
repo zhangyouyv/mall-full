@@ -31,7 +31,7 @@ public class GmallSearchServiceApplicationTests {
     public void contextLoads() throws IOException {
         //查询mysql
         List<PmsSkuInfo> pmsSkuInfos = new ArrayList<>();
-         pmsSkuInfos = skuService.getAll();
+        pmsSkuInfos = skuService.getAll();
         //转化成es数据结构
         List<PmsSearchSkuInfo> pmsSearchSkuInfos = new ArrayList<>();
         for (PmsSkuInfo pmsSkuInfo : pmsSkuInfos) {

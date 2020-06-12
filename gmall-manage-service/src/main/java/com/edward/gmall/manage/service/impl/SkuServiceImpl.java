@@ -17,6 +17,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -98,20 +99,20 @@ public class SkuServiceImpl implements SkuService {
 
         //查询缓存
         //拼接key
-        String skuKey = "sku:"+skuId+"info";
+        String skuKey = "sku:" + skuId + "info";
         String skuJson = jedis.get(skuKey);
 
-        if(StringUtils.isNotBlank(skuJson)){
-            pmsSkuInfo = JSON.parseObject(skuJson,PmsSkuInfo.class);
-        }else {
+        if (StringUtils.isNotBlank(skuJson)) {
+            pmsSkuInfo = JSON.parseObject(skuJson, PmsSkuInfo.class);
+        } else {
             //需要设置redis分布式锁来防止缓存击穿问题
             //为了防止误删锁，我们需要给锁加上识别码
             String token = UUID.randomUUID().toString();
-            String lock= jedis.set("sku:" + skuId + ":redisLock", token, "nx", "px", 1000);
-            if(StringUtils.isNotBlank(lock)&&"OK".equals(lock)){
+            String lock = jedis.set("sku:" + skuId + ":redisLock", token, "nx", "px", 1000);
+            if (StringUtils.isNotBlank(lock) && "OK".equals(lock)) {
 
-            //如果缓存中没有，查询mysql
-            pmsSkuInfo = getItemByIdFromDB(skuId);
+                //如果缓存中没有，查询mysql
+                pmsSkuInfo = getItemByIdFromDB(skuId);
 
                 try {
                     Thread.sleep(3000);
@@ -119,22 +120,22 @@ public class SkuServiceImpl implements SkuService {
                     e.printStackTrace();
                 }
 
-            //mysql查询结果存入redis
-            if(pmsSkuInfo!=null){
-                jedis.set("sku:"+skuId+":info", JSON.toJSONString(pmsSkuInfo));
-            }else{
-                //数据库中不存在改sku
-                //为了防止缓存穿透，将null或者空字符串设置给redis
-                jedis.setex("sku:"+skuId+":info", 60*3, JSON.toJSONString(""));
-            }
-            //删锁之前验证token
+                //mysql查询结果存入redis
+                if (pmsSkuInfo != null) {
+                    jedis.set("sku:" + skuId + ":info", JSON.toJSONString(pmsSkuInfo));
+                } else {
+                    //数据库中不存在改sku
+                    //为了防止缓存穿透，将null或者空字符串设置给redis
+                    jedis.setex("sku:" + skuId + ":info", 60 * 3, JSON.toJSONString(""));
+                }
+                //删锁之前验证token
                 String lockToken = jedis.get("sku:" + skuId + ":redisLock");
-            if(StringUtils.isNotBlank(lockToken)&&token.equals(lockToken)){
-                //jedis.eval("lua");//使用lua脚本，查询到key的同时删除该key，防止高并发下的线程问题
-                //在访问mysql后，删除锁
-                jedis.del("sku:"+skuId+":info");
-            }
-        }else{
+                if (StringUtils.isNotBlank(lockToken) && token.equals(lockToken)) {
+                    //jedis.eval("lua");//使用lua脚本，查询到key的同时删除该key，防止高并发下的线程问题
+                    //在访问mysql后，删除锁
+                    jedis.del("sku:" + skuId + ":info");
+                }
+            } else {
                 //失败后自旋
 
                 return getItemById(skuId);
@@ -167,5 +168,18 @@ public class SkuServiceImpl implements SkuService {
         return pmsSkuInfos;
     }
 
+    @Override
+    public boolean checkPrice(String productSkuId, BigDecimal price) {
+        //消极处理，不会出错
+        boolean b = false;
 
+        PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
+        pmsSkuInfo.setId(productSkuId);
+        PmsSkuInfo pmsSkuInfo1 = pmsSkuInfoMapper.selectOne(pmsSkuInfo);
+        //金钱价格的比较，必须使用big decimal
+        if (price.compareTo(pmsSkuInfo1.getPrice()) == 0) {
+            b = true;
+        }
+        return b;
+    }
 }

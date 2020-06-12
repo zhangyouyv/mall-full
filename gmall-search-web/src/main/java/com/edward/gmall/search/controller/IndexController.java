@@ -1,11 +1,13 @@
 package com.edward.gmall.search.controller;
 
+import com.edward.gmall.annotations.LoginRequired;
 import com.edward.gmall.bean.PmsBaseAttrInfo;
 import com.edward.gmall.bean.PmsSearchParam;
 import com.edward.gmall.bean.PmsSearchSkuInfo;
 import com.edward.gmall.bean.PmsSkuAttrValue;
 import com.edward.gmall.service.AttrService;
 import com.edward.gmall.service.SearchService;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,10 +29,10 @@ public class IndexController {
     AttrService attrService;
 
     @RequestMapping("list.html")
-    public String getList(PmsSearchParam pmsSearchParam, ModelMap modelMap){
+    public String getList(PmsSearchParam pmsSearchParam, ModelMap modelMap) {
         //调用搜索服务，返回搜索结果
         List<PmsSearchSkuInfo> pmsSearchSkuInfoList = searchService.getList(pmsSearchParam);
-        modelMap.put("skuLsInfoList",pmsSearchSkuInfoList);
+        modelMap.put("skuLsInfoList", pmsSearchSkuInfoList);
 
         //利用set集合去重或者es的聚合函数对涉及到的valueid去重
         Set<String> valueSet = new HashSet<>();
@@ -46,8 +48,17 @@ public class IndexController {
         modelMap.put("attrList", pmsBaseAttrInfoList);
         return "list";
     }
+
     @RequestMapping("index")
-    public String getIndex(){
+    @LoginRequired(loginSuccess = false)
+    public String getIndex(HttpServletRequest request, ModelMap modelMap) {
+//        String oldToken = CookieUtil.getCookieValue(request, "oldToken", true);
+//        Map<String, Object> gmall = JwtUtil.decode(oldToken, "gmall", "127.0.0.1");
+//
+//        if(gmall!=null) {
+//
+//            modelMap.put("nickname", (String) gmall.get("nickName"));
+//        }
         return "index";
     }
 }

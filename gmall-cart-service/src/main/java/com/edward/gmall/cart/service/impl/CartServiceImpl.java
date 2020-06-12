@@ -24,6 +24,7 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     OmsCartItemMapper omsCartItemMapper;
+
     @Override
     public OmsCartItem ifCartExistByUser(String skuId, String memberId) {
         OmsCartItem omsCartItem = new OmsCartItem();
@@ -35,7 +36,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addCart(OmsCartItem omsCartItem) {
-        if(StringUtils.isNotBlank(omsCartItem.getMemberId())){
+        if (StringUtils.isNotBlank(omsCartItem.getMemberId())) {
             omsCartItemMapper.insert(omsCartItem);
         }
     }
@@ -56,13 +57,13 @@ public class CartServiceImpl implements CartService {
         //同步到缓存中
         Jedis jedis = redisUtil.getJedis();
 
-        Map<String,String> hashMap = new HashMap();
+        Map<String, String> hashMap = new HashMap();
         for (OmsCartItem cartItem : omsCartItems) {
             hashMap.put(cartItem.getProductSkuId(), JSON.toJSONString(cartItem));
         }
 
-        jedis.del("user:"+memberId+":cart");
-        jedis.hmset("user:"+memberId+":cart",hashMap);
+        jedis.del("user:" + memberId + ":cart");
+        jedis.hmset("user:" + memberId + ":cart", hashMap);
 
         jedis.close();
     }
@@ -71,13 +72,13 @@ public class CartServiceImpl implements CartService {
     public List<OmsCartItem> cartList(String memberId) {
         List<OmsCartItem> omsCartItems = new ArrayList();
         Jedis jedis = redisUtil.getJedis();
-        List<String> hvalues = jedis.hvals("user:"+memberId+":cart");
+        List<String> hvalues = jedis.hvals("user:" + memberId + ":cart");
         for (String hvalue : hvalues) {
             OmsCartItem omsCartItem1 = JSON.parseObject(hvalue, OmsCartItem.class);
             omsCartItems.add(omsCartItem1);
         }
 
-            jedis.close();
+        jedis.close();
         return omsCartItems;
     }
 

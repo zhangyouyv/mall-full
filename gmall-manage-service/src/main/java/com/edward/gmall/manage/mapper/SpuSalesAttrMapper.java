@@ -9,5 +9,5 @@ import java.util.List;
 
 @Mapper
 public interface SpuSalesAttrMapper extends tk.mybatis.mapper.common.Mapper<PmsProductSaleAttr> {
-    List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(@Param("productId") String productId, @Param("skuId")String skuId);
+    List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(@Param("productId") String productId, @Param("skuId") String skuId);
 }

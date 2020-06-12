@@ -66,7 +66,7 @@ public class SpuServiceImpl implements SpuService {
     public List<PmsProductSaleAttr> getSpuSaleAttrList(String spuId) {
         PmsProductSaleAttr pmsProductSaleAttr = new PmsProductSaleAttr();
         pmsProductSaleAttr.setProductId(spuId);
-        List<PmsProductSaleAttr> pmsProductSaleAttrs=spuSalesAttrMapper.select(pmsProductSaleAttr);
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = spuSalesAttrMapper.select(pmsProductSaleAttr);
         for (PmsProductSaleAttr productSaleAttr : pmsProductSaleAttrs) {
             PmsProductSaleAttrValue pmsProductSaleAttrValue = new PmsProductSaleAttrValue();
             pmsProductSaleAttrValue.setProductId(spuId);
@@ -82,12 +82,12 @@ public class SpuServiceImpl implements SpuService {
     public List<PmsProductImage> getSpuImageList(String spuId) {
         PmsProductImage pmsProductImage = new PmsProductImage();
         pmsProductImage.setProductId(spuId);
-        List<PmsProductImage>  pmsProductImages = pmsProductImageMapper.select(pmsProductImage);
+        List<PmsProductImage> pmsProductImages = pmsProductImageMapper.select(pmsProductImage);
         return pmsProductImages;
     }
 
     @Override
-    public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String productId,String skuId) {
+    public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String productId, String skuId) {
 
         //多次查询数据库导致性能低下
 /*        //获取销售属性
@@ -108,7 +108,7 @@ public class SpuServiceImpl implements SpuService {
             productSaleAttr.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }*/
 
-        List<PmsProductSaleAttr> pmsProductSaleAttrs = spuSalesAttrMapper.spuSaleAttrListCheckBySku(productId,skuId);
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = spuSalesAttrMapper.spuSaleAttrListCheckBySku(productId, skuId);
         return pmsProductSaleAttrs;
     }
 

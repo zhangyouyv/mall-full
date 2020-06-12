@@ -19,13 +19,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.edward</groupId>
+            <groupId>com.edward</groupId>
             <artifactId>gmall-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.edward</groupId>
+            <groupId>com.edward</groupId>
             <artifactId>gmall-web-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -44,6 +44,12 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.edward</groupId>
+            <artifactId>gmall-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
